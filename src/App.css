@@ -17,3 +17,10 @@ button:hover {
     color: #fff;
     border-color: #d8d8cb;
 }
+.image-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin-top: 2.5rem;
+  gap: 1.3rem ;
+
+}

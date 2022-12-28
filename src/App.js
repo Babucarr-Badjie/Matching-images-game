@@ -1,14 +1,15 @@
 import { useState } from "react";
 import "./App.css";
+import SingleImage from "./myComponents/SingleImage";
 
 // step 1: create th array of characters
 const characterImages = [
-  { src: "/images/helmet-1.png" },
-  { src: "/images/potion-1.png" },
-  { src: "/images/ring-1.png" },
-  { src: "/images/scroll-1.png" },
-  { src: "/images/shield-1.png" },
-  { src: "/images/sword-1.png" },
+  { src: "/images/babu-1.jpg" },
+  { src: "/images/kristy.jpg" },
+  { src: "/images/sallah-1.jpg" },
+  { src: "/images/mei-1.jpg" },
+  { src: "/images/footballer-1.jpg" },
+  { src: "/images/roadmap.jpg" },
 ];
 
 function App() {
@@ -37,16 +38,7 @@ function App() {
       {/* step 5: display the images in the browser in grid */}
       <div className="image-grid">
         {images.map((image) => (
-          <div className="image" key={image.id}>
-            <div>
-              <img className="front" src={image.src} alt="front-img" />
-              <img
-                className="backside"
-                src="/images/cover.png"
-                alt="back-img"
-              />
-            </div>
-          </div>
+          <SingleImage key={image.id} image={image} />
         ))}
       </div>
     </div>
