@@ -8,3 +8,24 @@
   border: 3px solid #fff;
   border-radius: 0.4rem;
 }
+
+/* front of the image --the image */
+.image .front-side {
+  transform: rotateY(90deg);
+  transition: all ease-in 0.2s;
+  position: absolute;
+}
+.flipped .front-side {
+  transform: rotateY(0deg);
+  transition-delay: 0.2s;
+}
+
+/* back of the image --cover */
+.image .back-side {
+  transition: all ease-in 0.2s;
+  transition-delay: 0.2s;
+}
+.flipped .back-side {
+  transform: rotateY(90deg);
+  transition-delay: 0s;
+}

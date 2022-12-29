@@ -1,21 +1,26 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import SingleImage from "./myComponents/SingleImage";
 
 // step 1: create th array of characters
+// step 11. add a match property to each image
 const characterImages = [
-  { src: "/images/babu-1.jpg" },
-  { src: "/images/kristy.jpg" },
-  { src: "/images/sallah-1.jpg" },
-  { src: "/images/mei-1.jpg" },
-  { src: "/images/footballer-1.jpg" },
-  { src: "/images/roadmap.jpg" },
+  { src: "/images/babu-1.jpg", matched: false },
+  { src: "/images/kristy.jpg", matched: false },
+  { src: "/images/sallah-1.jpg", matched: false },
+  { src: "/images/mei-1.jpg", matched: false },
+  { src: "/images/footballer-1.jpg", matched: false },
+  { src: "/images/roadmap.jpg", matched: false },
 ];
 
 function App() {
   // step 3: create the state to store images
   const [images, setImages] = useState([]);
   const [turns, setTurns] = useState(0);
+
+  // step 6: crete user choices state
+  const [choiceOne, setChoiceOne] = useState(null);
+  const [choiceTwo, setChoiceTwo] = useState(null);
 
   // step 2: shuffle the images
   const shuffleImages = () => {
@@ -28,7 +33,47 @@ function App() {
     setTurns(0);
   };
 
-  console.log(images, turns);
+  // console.log(images, turns);
+
+  // step 8: handle a choice function
+  const handleChoice = (image) => {
+    // console.log(image);
+    choiceOne ? setChoiceTwo(image) : setChoiceOne(image);
+  };
+
+  // step 9: reset choices & increase turns.
+  const resetTurns = () => {
+    setChoiceOne(null);
+    setChoiceTwo(null);
+    setTurns((prevTurns) => prevTurns + 1);
+  };
+
+  // step 10: Compare the two choices made by the user
+  useEffect(() => {
+    if (choiceOne && choiceTwo) {
+      if (choiceOne.src === choiceTwo.src) {
+        // console.log("match");
+
+        // step 12: update the matched property to true when the images matched
+        setImages((prevImages) => {
+          return prevImages.map((image) => {
+            if (image.src === choiceOne.src) {
+              return { ...image, matched: true };
+            } else {
+              return image;
+            }
+          });
+        });
+        resetTurns();
+      } else {
+        // console.log("not a match");
+        // step 16: set a timeout of reseting an image when not match
+        setTimeout(() => resetTurns(), 1000);
+      }
+    }
+  }, [choiceOne, choiceTwo]);
+  console.log(images);
+
   return (
     <div className="App">
       <h1>Matching Characters</h1>
@@ -38,7 +83,16 @@ function App() {
       {/* step 5: display the images in the browser in grid */}
       <div className="image-grid">
         {images.map((image) => (
-          <SingleImage key={image.id} image={image} />
+          <SingleImage
+            key={image.id}
+            image={image}
+            handleChoice={handleChoice}
+
+            // step 13: flipping the images (three senarious to match the images)
+            flipped={
+              image === choiceOne || image === choiceTwo || image.matched
+            }
+          />
         ))}
       </div>
     </div>
