@@ -9,3 +9,12 @@ body {
   background: #110a1a;
   color: #fff;
 }
+
+/* ================Media  Queries===================== */
+@media screen and (max-width: 1024px) {
+  div.back-side img{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 100%;
+  }
+}

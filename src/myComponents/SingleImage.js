@@ -1,9 +1,16 @@
 import "./SingleImage.css";
 
-export default function SingleImage({ image, handleChoice, flipped }) {
+export default function SingleImage({
+  image,
+  handleChoice,
+  flipped,
+  disabled,
+}) {
   // step 8: create the handleChoiceClick function
   const handleChoiceClick = () => {
-    handleChoice(image);
+    if (!disabled) {
+      handleChoice(image);
+    }
   };
   return (
     <div className="image">

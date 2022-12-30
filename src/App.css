@@ -13,14 +13,44 @@ button {
   cursor: pointer;
 }
 button:hover {
-    background-color: #000;
-    color: #fff;
-    border-color: #d8d8cb;
+  background-color: #000;
+  color: #fff;
+  border-color: #d8d8cb;
 }
-.image-grid{
+.image-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   margin-top: 2.5rem;
-  gap: 1.3rem ;
+  gap: 1.3rem;
+}
 
+/* ================Media  Queries (tablet)===================== */
+@media screen and (max-width: 1024px) {
+  .image-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 100%;
+  }
+  .App {width: 80%}
+}
+
+/* ================Media  Queries (small screens)===================== */
+@media screen and (max-width: 600px) {
+  .image-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .App h1 {
+    font-size: 2rem;
+  }
+  .App p {
+    font-size: 1.2rem;
+  }
+  .App button {
+    font-size: 1rem;
+  }
+  .App {
+    width: 70%;
+  }
 }
