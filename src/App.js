@@ -5,12 +5,12 @@ import SingleImage from "./myComponents/SingleImage";
 // step 1: create th array of characters
 // step 11. add a match property to each image
 const characterImages = [
-  { src: "/images/babu-1.jpg", matched: false },
-  { src: "/images/kristy.jpg", matched: false },
-  { src: "/images/sallah-1.jpg", matched: false },
-  { src: "/images/mei-1.jpg", matched: false },
+  { src: "/images/babu-2.jpg", matched: false },
+  { src: "/images/kristy-1.jpg", matched: false },
+  { src: "/images/sallah-2.jpg", matched: false },
+  { src: "/images/mei-2.jpg", matched: false },
   { src: "/images/footballer-1.jpg", matched: false },
-  { src: "/images/roadmap.jpg", matched: false },
+  { src: "/images/alieu.jpg", matched: false },
 ];
 
 function App() {
